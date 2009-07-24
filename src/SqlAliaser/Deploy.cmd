@@ -1,3 +1,2 @@
-xcopy /v /R /Y D:\Projects\Personal\SqlAliaser\SqlAliaser\Bin\Debug\*.* D:\Utilities\SqlAliaser\
+xcopy /v /R /Y D:\Projects\Personal\SqlAliaser\src\SqlAliaser\bin\debug\SqlAliaser.exe D:\Utilities\SqlAliaser\
 
-Pause
