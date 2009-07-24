@@ -1,0 +1,3 @@
+﻿- Add support for configuring what transport to use for the local alias (currently only named pipes are used)
+- Add support for using a local named instance (currently only supports the default instance)
+- Add support for having multiple concurrent aliases

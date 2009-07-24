@@ -1,0 +1,10 @@
+D:\Projects\Personal\SqlAliaser\SqlAliaser\obj\Debug\SqlAliaser.exe
+D:\Projects\Personal\SqlAliaser\SqlAliaser\obj\Debug\SqlAliaser.pdb
+D:\Projects\Personal\SqlAliaser\src\SqlAliaser\obj\Debug\SqlAliaser.exe
+D:\Projects\Personal\SqlAliaser\src\SqlAliaser\obj\Debug\SqlAliaser.pdb
+D:\Projects\Personal\SqlAliaser\src\SqlAliaser\bin\Debug\SqlAliaser.exe
+D:\Projects\Personal\SqlAliaser\src\SqlAliaser\bin\Debug\SqlAliaser.pdb
+D:\Projects\Personal\SqlAliaser\src\SqlAliaser\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\Personal\SqlAliaser\src\SqlAliaser\obj\Debug\SqlAliaser.csproj.GenerateResource.Cache
+D:\Projects\Personal\SqlAliaser\src\SqlAliaser\obj\Debug\SqlAliaser.AliasConfigForm.resources
+D:\Projects\Personal\SqlAliaser\src\SqlAliaser\obj\Debug\SqlAliaser.Properties.Resources.resources
