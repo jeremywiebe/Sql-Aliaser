@@ -1,8 +1,0 @@
-D:\Projects\Personal\SqlAliaser\SqlAliaser.UI\bin\Debug\SqlAliaser.exe
-D:\Projects\Personal\SqlAliaser\SqlAliaser.UI\bin\Debug\SqlAliaser.pdb
-D:\Projects\Personal\SqlAliaser\SqlAliaser.UI\obj\Debug\ResolveAssemblyReference.cache
-D:\Projects\Personal\SqlAliaser\SqlAliaser.UI\obj\Debug\SqlAliaser.UI.Form1.resources
-D:\Projects\Personal\SqlAliaser\SqlAliaser.UI\obj\Debug\SqlAliaser.UI.Properties.Resources.resources
-D:\Projects\Personal\SqlAliaser\SqlAliaser.UI\obj\Debug\SqlAliaser.UI.csproj.GenerateResource.Cache
-D:\Projects\Personal\SqlAliaser\SqlAliaser.UI\obj\Debug\SqlAliaser.exe
-D:\Projects\Personal\SqlAliaser\SqlAliaser.UI\obj\Debug\SqlAliaser.pdb
