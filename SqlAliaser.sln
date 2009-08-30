@@ -5,6 +5,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlAliaser", "src\SqlAliase
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlAliaser.Tests", "src\SqlAliaser.Tests\SqlAliaser.Tests.csproj", "{9E31EEDE-E23C-438B-B3DC-8FE69CB904BB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{10CC0365-A1A4-432B-AC0B-C3B8A4982574}"
+	ProjectSection(SolutionItems) = preProject
+		lib\xunit.dll = lib\xunit.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Growl", "Growl", "{1E75D2B9-CD22-4A2D-B93E-55BDCC3A6466}"
+	ProjectSection(SolutionItems) = preProject
+		lib\Growl\Growl.Connector.dll = lib\Growl\Growl.Connector.dll
+		lib\Growl\Growl.CoreLibrary.dll = lib\Growl\Growl.CoreLibrary.dll
+		lib\Growl\license.txt = lib\Growl\license.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rhino.Mocks", "Rhino.Mocks", "{90C03571-DC88-4591-974D-B702E0F34A76}"
+	ProjectSection(SolutionItems) = preProject
+		lib\Rhino.Mocks\Rhino.Mocks.dll = lib\Rhino.Mocks\Rhino.Mocks.dll
+		lib\Rhino.Mocks\Rhino.Mocks.xml = lib\Rhino.Mocks\Rhino.Mocks.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +48,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1E75D2B9-CD22-4A2D-B93E-55BDCC3A6466} = {10CC0365-A1A4-432B-AC0B-C3B8A4982574}
+		{90C03571-DC88-4591-974D-B702E0F34A76} = {10CC0365-A1A4-432B-AC0B-C3B8A4982574}
 	EndGlobalSection
 EndGlobal

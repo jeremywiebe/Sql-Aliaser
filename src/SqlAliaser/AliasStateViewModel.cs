@@ -5,10 +5,10 @@ namespace SqlAliaser
 {
     public class AliasStateViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
         private const string ButtonTextAliased = "Remove Alias!";
         private const string ButtonTextNotAliased = "Alias It!";
 
+        private readonly Growler _growler;
         private readonly IAliasStateProvider _provider;
 
         private string _aliasButtonText;
@@ -16,77 +16,83 @@ namespace SqlAliaser
         private StateIcons _stateIcons;
         private Icon _windowIcon;
 
-        public AliasStateViewModel(IAliasStateProvider provider, string serverName)
+        public AliasStateViewModel(IAliasStateProvider provider, string serverName, Growler growler)
         {
-            this._provider = provider;
-            this.ServerName = serverName;
-            this._stateIcons = new StateIcons();
+            _provider = provider;
+            _growler = growler;
+            ServerName = serverName;
+            _stateIcons = new StateIcons();
 
             OnAliasStateChanged(string.Empty);
         }
 
         public bool HasAlias
         {
-            get { return this._provider.HasAlias; }
+            get { return _provider.HasAlias; }
         }
 
         public string ServerName { get; set; }
 
         public string AliasButtonText
         {
-            get { return this._aliasButtonText; }
+            get { return _aliasButtonText; }
         }
 
         public string AliasState
         {
-            get { return this._aliasState; }
+            get { return _aliasState; }
         }
 
         public Color ServerTextBoxBackgroundColor { get; set; }
 
         public Icon WindowIcon
         {
-            get { return this._windowIcon;  }
+            get { return _windowIcon; }
         }
 
         public bool CanChangeServerName
         {
-            get
-            {
-                return !this.HasAlias;
-            }
+            get { return !HasAlias; }
         }
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+        #endregion
 
         public void AliasUsingNamedPipes()
         {
-            this._provider.AliasUsingNamedPipes();
+            _provider.AliasUsingNamedPipes();
             OnAliasStateChanged(string.Empty);
         }
 
         public void RemoveAlias()
         {
-            this._provider.RemoveAlias();
+            _provider.RemoveAlias();
             OnAliasStateChanged(string.Empty);
         }
 
         protected void OnAliasStateChanged(string propertyName)
         {
-            if (this.HasAlias)
+            if (HasAlias)
             {
-                this._aliasButtonText = ButtonTextAliased;
-                this.ServerTextBoxBackgroundColor = Color.Gray;
-                this._aliasState = "Aliased " + this.ServerName;
-                this._windowIcon = this._stateIcons.Aliased;
+                _aliasButtonText = ButtonTextAliased;
+                ServerTextBoxBackgroundColor = Color.Gray;
+                _aliasState = "Aliased " + ServerName;
+                _windowIcon = _stateIcons.Aliased;
+                _growler.NotifyAliased(ServerName);
             }
             else
             {
-                this._aliasButtonText = ButtonTextNotAliased;
-                this.ServerTextBoxBackgroundColor = SystemColors.Window;
-                this._aliasState = "Not Aliased " + this.ServerName;
-                this._windowIcon = this._stateIcons.NotAliased;
+                _aliasButtonText = ButtonTextNotAliased;
+                ServerTextBoxBackgroundColor = SystemColors.Window;
+                _aliasState = "Not Aliased " + ServerName;
+                _windowIcon = _stateIcons.NotAliased;
+                _growler.NotifyNotAliased(ServerName);
             }
-            
-            this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

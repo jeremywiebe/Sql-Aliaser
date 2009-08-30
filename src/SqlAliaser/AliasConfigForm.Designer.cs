@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AliasConfigForm));
             this.aliasStatusNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyIconContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.stateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.aliasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +40,6 @@
             this.serverToAliasLabel = new System.Windows.Forms.Label();
             this.serverToAliasTextBox = new System.Windows.Forms.TextBox();
             this.aliasButton = new System.Windows.Forms.Button();
-            this.stateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notifyIconContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -57,11 +57,15 @@
             // 
             this.notifyIconContextMenu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.stateBindingSource, "AliasState", true));
             this.notifyIconContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                                                                                   this.aliasToolStripMenuItem,
-                                                                                                   this.toolStripMenuItem1,
-                                                                                                   this.exitToolStripMenuItem});
+            this.aliasToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
             this.notifyIconContextMenu.Name = "notifyIconContextMenu";
             this.notifyIconContextMenu.Size = new System.Drawing.Size(140, 54);
+            // 
+            // stateBindingSource
+            // 
+            this.stateBindingSource.DataSource = typeof(SqlAliaser.AliasStateViewModel);
             // 
             // aliasToolStripMenuItem
             // 
@@ -107,7 +111,7 @@
             this.serverToAliasTextBox.Name = "serverToAliasTextBox";
             this.serverToAliasTextBox.Size = new System.Drawing.Size(212, 20);
             this.serverToAliasTextBox.TabIndex = 1;
-            this.serverToAliasTextBox.Text = "irc-scpc-sql01";
+            this.serverToAliasTextBox.Text = "irc-scpc-sql02";
             // 
             // aliasButton
             // 
@@ -119,10 +123,6 @@
             this.aliasButton.Text = "Alias It!";
             this.aliasButton.UseVisualStyleBackColor = true;
             this.aliasButton.Click += new System.EventHandler(this.aliasButton_Click);
-            // 
-            // stateBindingSource
-            // 
-            this.stateBindingSource.DataSource = typeof(AliasStateViewModel);
             // 
             // AliasConfigForm
             // 

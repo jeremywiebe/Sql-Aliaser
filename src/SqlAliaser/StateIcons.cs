@@ -11,8 +11,8 @@ namespace SqlAliaser
 
         public StateIcons()
         {
-            this._aliased = new Icon(GetIconStreamFromResource("Aliased.ico"));
-            this._notAliased = new Icon(GetIconStreamFromResource("NotAliased.ico"));
+            _aliased = new Icon(GetIconStreamFromResource("Aliased.ico"));
+            _notAliased = new Icon(GetIconStreamFromResource("NotAliased.ico"));
         }
 
         private Stream GetIconStreamFromResource(string filename)
@@ -27,12 +27,12 @@ namespace SqlAliaser
 
         public Icon Aliased
         {
-            get { return this._aliased; }
+            get { return _aliased; }
         }
 
         public Icon NotAliased
         {
-            get { return this._notAliased; }
+            get { return _notAliased; }
         }
     }
 }

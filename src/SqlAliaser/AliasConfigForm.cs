@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using SqlAliaser.Properties;
 
 namespace SqlAliaser
 {
@@ -10,15 +11,21 @@ namespace SqlAliaser
         private bool _shuttingDown = false;
         private AliasStateProvider _stateProvider;
         private AliasStateViewModel _viewModel;
+        private AliasStateViewModel _model;
+        private Growler _growler;
 
         public AliasConfigForm()
         {
             InitializeComponent();
 
-            this._stateProvider = new AliasStateProvider(this.serverToAliasTextBox.Text);
-            this._viewModel = new AliasStateViewModel(this._stateProvider, "irc-scpc-sql01");
-            this._viewModel.PropertyChanged += AliasStateChanged;
-            this.stateBindingSource.DataSource = this._viewModel;
+            _stateProvider = new AliasStateProvider(serverToAliasTextBox.Text);
+
+            _growler = new Growler();
+            _growler.Register();
+
+            _model = _viewModel = new AliasStateViewModel(_stateProvider, Settings.Default.ServerToAlias, _growler);
+            _viewModel.PropertyChanged += AliasStateChanged;
+            stateBindingSource.DataSource = _viewModel;
 
             SetUIStateFromProvider();
         }
@@ -30,28 +37,32 @@ namespace SqlAliaser
 
         private void SetUIStateFromProvider()
         {
-            this._latch.RunInsideLatch(() =>
+            _latch.RunInsideLatch(() =>
                                        {
                                            // A few things which we can't databind to.
-                                           this.aliasStatusNotifyIcon.Text = this._viewModel.AliasState;
-                                           this.aliasStatusNotifyIcon.BalloonTipText = this.aliasStatusNotifyIcon.Text;
-                                           this.aliasStatusNotifyIcon.ShowBalloonTip(1500);
-                                           this.aliasStatusNotifyIcon.Icon = this._viewModel.WindowIcon;
+                                           aliasStatusNotifyIcon.Text = this._viewModel.AliasState;
+                                           aliasStatusNotifyIcon.BalloonTipText = this.aliasStatusNotifyIcon.Text;
+                                           aliasStatusNotifyIcon.ShowBalloonTip(1500);
+                                           aliasStatusNotifyIcon.Icon = this._viewModel.WindowIcon;
                                        });
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this._shuttingDown = true;
+            _shuttingDown = true;
             Close();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!this._shuttingDown)
+            if (!_shuttingDown)
             {
                 Hide();
                 e.Cancel = true;
+            }
+            else
+            {
+                _growler.NotifyClosed();
             }
         }
 
@@ -72,10 +83,10 @@ namespace SqlAliaser
 
         private void ToggleAliasMode()
         {
-            if (this._viewModel.HasAlias)
-                this._viewModel.RemoveAlias();
+            if (_viewModel.HasAlias)
+                _viewModel.RemoveAlias();
             else
-                this._viewModel.AliasUsingNamedPipes();
+                _viewModel.AliasUsingNamedPipes();
         }
     }
 }
