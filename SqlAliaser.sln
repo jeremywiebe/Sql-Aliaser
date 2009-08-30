@@ -23,6 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rhino.Mocks", "Rhino.Mocks"
 		lib\Rhino.Mocks\Rhino.Mocks.xml = lib\Rhino.Mocks\Rhino.Mocks.xml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{51377675-DC1E-4B9C-8E6A-8B9E65F4DE25}"
+	ProjectSection(SolutionItems) = preProject
+		Deploy.cmd = Deploy.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
